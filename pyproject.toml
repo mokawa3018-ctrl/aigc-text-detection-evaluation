@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aigc-text-detection-evaluation"
+version = "0.1.0"
+description = "面向 AIGC 文本检测器的公开评测工具集"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [
+  { name = "mokawa3018-ctrl" },
+]
+dependencies = []
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.scripts]
+aigc-eval = "evaluate:main"
+aigc-validate = "validate:main"
+aigc-compare = "compare:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+py-modules = ["compare", "evaluate", "label_utils", "validate"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 88
+extend-exclude = ["data", "reports"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src", "tests", "examples"]
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true

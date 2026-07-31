@@ -1,5 +1,9 @@
 # AIGC 文本检测评测框架
 
+[![CI](https://github.com/mokawa3018-ctrl/aigc-text-detection-evaluation/actions/workflows/ci.yml/badge.svg)](https://github.com/mokawa3018-ctrl/aigc-text-detection-evaluation/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 一个面向 AIGC 文本检测器的公开、脱敏评测工具集，提供数据校验、指标计算、分组分析和版本对比能力。
 
 项目只处理匿名标签和合成示例数据，不包含真实接口、内部模型、业务文本、账号凭证或部署信息。
