@@ -48,20 +48,41 @@
 
 ## 2. 结果文件
 
-黑盒检测结果统一为：
+黑盒检测结果至少需要真实标签和预测标签。支持以下字段：
 
-| 字段 | 含义 |
-|---|---|
-| `id` | 输入记录标识 |
-| `true_label` | 真实标签 |
-| `source` | 主题或来源类别 |
-| `original_length` | 原始字符数 |
-| `sent_length` | 实际送检字符数 |
-| `truncated` | 是否截断 |
-| `api_label` | 检测器预测标签 |
-| `confidence` | 接口返回置信度；不默认解释为 AI 概率 |
+| 字段 | 必需 | 含义 |
+|---|---:|---|
+| `id` | 比较/校验时必需 | 匿名样本唯一标识 |
+| `true_label` 或 `label` | 是 | 真实标签 |
+| `api_label` 或 `predicted_label` | 是 | 检测器预测标签 |
+| `source` | 否 | 主题、来源或匿名分组 |
+| `generator` | 否 | 生成器公开名称或匿名代号 |
+| `confidence` | 否 | 连续置信度或分数 |
+| `length` | 否 | 通用文本长度 |
+| `target_char_count` | 否 | 目标生成字符数 |
+| `sent_length` | 否 | 实际送检字符数 |
+| `original_length` | 否 | 截断前字符数 |
+| `truncated` | 否 | 是否发生截断 |
 
-公开脚本同时接受 `predicted_label` 作为预测字段名。
+长度分析按 `length`、`target_char_count`、`sent_length`、`original_length` 的顺序选择第一个存在的字段。正式报告必须注明最终使用的长度字段。
+
+`confidence` 不默认解释为 AI 概率。若它只是预测标签自身的置信度，可以用于置信度分桶，但不能直接用于阈值曲线。
+
+最小评估文件示例：
+
+```csv
+id,true_label,api_label
+demo-001,1,AI生成文本
+demo-002,0,人类文本
+```
+
+包含扩展分析字段的示例：
+
+```csv
+id,true_label,api_label,source,generator,sent_length,confidence
+demo-001,1,AI生成文本,domain_a,model_a,180,0.91
+demo-002,0,人类文本,domain_b,human,150,0.88
+```
 
 ## 3. 数据质量门槛
 
