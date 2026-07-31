@@ -1,0 +1,7 @@
+id,true_label,source,original_length,sent_length,truncated,api_label,confidence
+demo-001,1,domain_a,180,180,False,AI生成文本,0.89
+demo-002,1,domain_b,260,260,False,AI生成文本,0.74
+demo-003,0,domain_a,150,150,False,人类文本,0.90
+demo-004,0,domain_b,620,512,True,AI生成文本,0.70
+demo-005,1,domain_a,410,410,False,AI生成文本,0.93
+demo-006,0,domain_b,320,320,False,人类文本,0.95

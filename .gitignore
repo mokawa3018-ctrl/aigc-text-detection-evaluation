@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Real data and local outputs must never be committed.
+data/*
+!data/demo_*.csv
+private/
+outputs/
+logs/
+*.log
+*.env
+.env*
+*.xlsx
+*.xls
+*.docx
+*.zip

@@ -1,0 +1,5 @@
+id,true_label,source,original_length,sent_length,truncated,api_label,confidence
+gen-001,1,domain_a,330,330,False,AI生成文本,0.94
+gen-002,1,domain_b,540,512,True,人类文本,0.58
+gen-003,1,domain_c,280,280,False,AI生成文本,0.89
+gen-004,1,domain_a,460,460,False,AI生成文本,0.92
